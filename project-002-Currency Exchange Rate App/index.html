@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currency Exchange Rate App</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="preconnect" href="https://api.frankfurter.dev" />
+</head>
+<body>
+
+  <div class="app">
+    <header class="header">
+      <h1>Currency Exchange Rate</h1>
+      <p class="subtitle">กำหนดมูลค่าเงินต้นทาง → เห็นมูลค่าปลายทาง และแลกกลับ</p>
+    </header>
+
+    <main class="main">
+      <!-- เงินต้นทาง -->
+      <section class="card card-from">
+        <label class="card-label">เงินต้นทาง (From)</label>
+        <div class="input-row">
+          <input type="number" id="amountFrom" class="input-amount" value="100" min="0" step="any" placeholder="0" />
+          <select id="currencyFrom" class="select-currency" aria-label="สกุลเงินต้นทาง"></select>
+        </div>
+      </section>
+
+      <!-- ปุ่มสลับ (optional) -->
+      <div class="swap-wrap">
+        <button type="button" class="btn-swap" id="btnSwap" aria-label="สลับสกุลเงิน">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8v12M17 20l4-4M17 20l-4-4"/></svg>
+        </button>
+      </div>
+
+      <!-- เงินปลายทาง -->
+      <section class="card card-to">
+        <label class="card-label">เงินปลายทาง (To)</label>
+        <div class="input-row">
+          <input type="text" id="amountTo" class="input-amount" readonly placeholder="—" />
+          <select id="currencyTo" class="select-currency" aria-label="สกุลเงินปลายทาง"></select>
+        </div>
+      </section>
+
+      <!-- ผลลัพธ์: แลกมา / แลกกลับ -->
+      <section class="result" id="resultSection">
+        <div class="result-row result-forward">
+          <span class="result-label">แลกมา</span>
+          <span class="result-value" id="resultForward">—</span>
+        </div>
+        <div class="result-row result-back">
+          <span class="result-label">แลกกลับ</span>
+          <span class="result-value" id="resultBack">—</span>
+        </div>
+        <p class="result-date" id="rateDate"></p>
+      </section>
+
+      <div class="status" id="status">
+        <div class="spinner hidden" id="spinner"></div>
+        <p class="error-msg hidden" id="errorMsg"></p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>อัตราจาก <a href="https://frankfurter.dev" target="_blank" rel="noopener">Frankfurter</a></p>
+    </footer>
+  </div>
+
+  <script src="scripts/api.js"></script>
+  <script src="scripts/ui.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

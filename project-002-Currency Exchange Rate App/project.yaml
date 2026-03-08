@@ -1,0 +1,38 @@
+# Currency Exchange Rate App - Project Plan
+# 002
+
+project:
+  name: Currency Exchange Rate App
+  id: "002"
+  description: แอปแปลงอัตราแลกเปลี่ยน กำหนดมูลค่าเงินต้นทาง เห็นมูลค่าปลายทาง และแสดงมูลค่าแลกกลับ
+  version: "0.1.0"
+
+stack:
+  frontend:
+    - HTML5
+    - CSS3
+    - Vanilla JavaScript
+  api:
+    primary: Frankfurter API  # https://frankfurter.dev/ (ฟรี ไม่ต้องใช้ API key)
+
+features:
+  - name: กำหนดมูลค่าเงินต้นทาง และเห็นมูลค่าปลายทาง
+    description: ป้อนจำนวนเงินต้นทาง เลือกสกุลเงินต้นทางและปลายทาง แสดงผลมูลค่าที่แปลงแล้วทันที
+  - name: แสดงมูลค่าแลกมา แลกกลับ
+    description: แสดงทั้งจำนวนที่แปลงไป (ต้นทาง → ปลายทาง) และจำนวนที่แปลงกลับ (ปลายทาง → ต้นทาง) เพื่อเปรียบเทียบ
+
+structure:
+  - index.html
+  - styles/style.css
+  - scripts/app.js
+  - scripts/api.js
+  - scripts/ui.js
+  - README.md
+
+config:
+  frankfurter:
+    base_url: "https://api.frankfurter.dev/v1"
+    endpoints:
+      latest: "/latest"
+      currencies: "/currencies"
+    note: "ไม่ต้องใช้ API key"
