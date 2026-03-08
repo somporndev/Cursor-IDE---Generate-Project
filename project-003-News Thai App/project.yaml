@@ -1,0 +1,33 @@
+# News Thai App - Project Plan
+# 003 จาก projects.md
+
+project:
+  name: News Thai App
+  id: "003"
+  description: เว็บข่าวไทย สไตล์โมเดิร์น แสดงข่าวเป็นกริดและฮีโร่
+  version: "0.1.0"
+
+stack:
+  frontend:
+    - HTML5
+    - CSS3
+    - Vanilla JavaScript
+  api:
+    optional: NewsAPI / GNews (ใส่ API key ใน config ถ้าต้องการข่าวจริง)
+
+features:
+  - name: หน้าแรกโมเดิร์น
+    description: Hero ข่าวเด่น กริดข่าวล่าสุด แคตากอรี
+  - name: แสดงข่าวการ์ด
+    description: รูป หัวข้อ แหล่งที่มา วันที่
+  - name: รองรับมือถือ
+    description: Responsive layout
+
+structure:
+  - index.html
+  - styles/style.css
+  - scripts/app.js
+  - scripts/api.js
+  - scripts/data.js
+  - assets/
+  - README.md

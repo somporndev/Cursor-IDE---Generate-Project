@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News Thai App – ข่าวไทย ทันเหตุการณ์</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+
+  <div class="root"> 
+    <!-- ─── Header ─── -->
+    <header class="header">
+      <div class="header-inner">
+        <a href="#" class="logo">
+          <span class="logo-icon">◉</span>
+          <span class="logo-text">News Thai</span>
+        </a>
+        <nav class="nav">
+          <a href="#" class="nav-link active" data-category="all">ทั้งหมด</a>
+          <a href="#" class="nav-link" data-category="general">ทั่วไป</a>
+          <a href="#" class="nav-link" data-category="business">ธุรกิจ</a>
+          <a href="#" class="nav-link" data-category="tech">เทคโนโลยี</a>
+          <a href="#" class="nav-link" data-category="sports">กีฬา</a>
+        </nav>
+        <button type="button" class="btn-menu" id="btnMenu" aria-label="เมนู">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ─── Hero (ข่าวเด่น) ─── -->
+    <section class="hero" id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-inner">
+        <span class="hero-badge" id="heroBadge">ข่าวเด่น</span>
+        <h1 class="hero-title" id="heroTitle">กำลังโหลด...</h1>
+        <p class="hero-desc" id="heroDesc"></p>
+        <div class="hero-meta">
+          <span class="hero-source" id="heroSource"></span>
+          <span class="hero-date" id="heroDate"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── ล่าสุด ─── -->
+    <main class="main">
+      <div class="container">
+        <h2 class="section-title">
+          <span class="section-title-text">ข่าวล่าสุด</span>
+          <span class="section-title-line"></span>
+        </h2>
+        <div class="news-grid" id="newsGrid">
+          <!-- cards injected by JS -->
+        </div>
+        <div class="loading" id="loading">
+          <div class="loading-spinner"></div>
+          <p>กำลังโหลดข่าว...</p>
+        </div>
+        <div class="empty hidden" id="empty">
+          <p>ไม่พบข่าวในหมวดนี้</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- ─── Modal ดูเนื้อข่าว ─── -->
+    <div class="modal" id="articleModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+      <div class="modal-backdrop" id="modalBackdrop"></div>
+      <div class="modal-box">
+        <button type="button" class="modal-close" id="modalClose" aria-label="ปิด">×</button>
+        <div class="modal-content">
+          <img class="modal-image" id="modalImage" src="" alt="" />
+          <div class="modal-body">
+            <span class="modal-category" id="modalCategory"></span>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <div class="modal-meta">
+              <span id="modalSource"></span>
+              <span id="modalDate"></span>
+            </div>
+            <div class="modal-description" id="modalDescription"></div>
+            <div class="modal-content-text" id="modalContent"></div>
+            <a class="modal-link" id="modalLink" href="#" target="_blank" rel="noopener">อ่านต่อที่แหล่งข่าว →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Footer ─── -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <span class="logo-text">News Thai</span>
+          <p>ข่าวไทย ทันเหตุการณ์ · สร้างเพื่อการเรียนรู้</p>
+          <p class="footer-note hidden" id="footerApiNote">ข่าวจาก NewsAPI · เนื่องจาก NewsAPI ไม่มีแหล่งข่าวไทย จึงแสดงข่าวต่างประเทศ</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="scripts/config.js"></script>
+  <script src="scripts/data.js"></script>
+  <script src="scripts/api.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
