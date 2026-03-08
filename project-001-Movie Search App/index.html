@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Search App</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="preconnect" href="https://www.omdbapi.com" />
+</head>
+<body>
+
+  <!-- Full-page blurred background (matches ref: blurred featured image behind container) -->
+  <div class="bg-blur" id="bgBlur"></div>
+
+  <div class="app">
+    <!-- ─── Navigation ─── -->
+    <header class="nav">
+      <nav class="nav-links">
+        <a href="#" class="nav-link active" data-tab="dashboard">DASHBOARD</a>
+        <a href="#" class="nav-link" data-tab="movies">MOVIES</a>
+        <a href="#" class="nav-link" data-tab="series">SERIES</a>
+        <a href="#" class="nav-link" data-tab="kids">KIDS</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="btn-icon btn-search" aria-label="Search" title="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button type="button" class="btn-icon btn-profile" aria-label="Profile">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ─── Search Overlay ─── -->
+    <div class="search-overlay hidden" id="searchOverlay">
+      <div class="search-bar">
+        <svg class="search-bar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search movies..." autocomplete="off" />
+        <button type="button" class="btn-close-search" id="closeSearch" aria-label="Close search">&times;</button>
+      </div>
+      <div class="search-status">
+        <div class="spinner hidden" id="searchSpinner"></div>
+        <p class="error-msg hidden" id="searchError"></p>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <!-- ─── Hero / Featured ─── -->
+    <section class="hero" id="hero">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-gradient"></div>
+      <div class="hero-body">
+        <h1 class="hero-title" id="heroTitle"></h1>
+        <p class="hero-meta" id="heroMeta"></p>
+        <div class="hero-actions">
+          <button type="button" class="btn-play" id="btnPlay">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            PLAY
+          </button>
+          <button type="button" class="btn-add" id="btnAdd" aria-label="Add to My List">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── My List ─── -->
+    <section class="list-section" id="myListSection">
+      <h2 class="list-heading">MY LIST</h2>
+      <div class="list-status">
+        <div class="spinner hidden" id="listSpinner"></div>
+        <p class="error-msg hidden" id="listError"></p>
+        <p class="empty-msg hidden" id="listEmpty">Your list is empty. Search and add movies!</p>
+      </div>
+      <div class="carousel" id="myListCarousel">
+        <div class="carousel-track" id="myListTrack"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ─── Detail Modal ─── -->
+  <div class="modal-overlay hidden" id="modalOverlay">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-panel">
+      <button type="button" class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <div class="modal-spinner" id="modalSpinner"><div class="spinner"></div></div>
+      <div class="modal-detail hidden" id="modalDetail"></div>
+    </div>
+  </div>
+
+  <script src="scripts/api.js"></script>
+  <script src="scripts/ui.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

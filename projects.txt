@@ -1,3 +1,0 @@
-- Movie Search App
-- Currency Exchange Rate App
-- News Headlines App

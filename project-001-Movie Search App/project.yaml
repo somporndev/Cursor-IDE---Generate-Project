@@ -1,0 +1,72 @@
+# Movie Search App - Project Plan
+# 001 จาก projects.md
+
+project:
+  name: Movie Search App
+  id: "001"
+  description: แอปค้นหาภาพยนตร์ด้วย API แสดงผลเป็นการ์ด พร้อมรายละเอียด
+  version: "0.1.0"
+
+# เทคโนโลยีที่ใช้
+stack:
+  frontend:
+    - HTML5
+    - CSS3
+    - Vanilla JavaScript
+  api:
+    primary: OMDb API  # https://www.omdbapi.com/ (ฟรี 1000 ครั้ง/วัน)
+    alternative: TMDb API  # https://www.themoviedb.org/ (ต้องสมัคร API key)
+
+# คุณสมบัติหลัก
+features:
+  - name: ค้นหาภาพยนตร์
+    description: ช่องค้นหาชื่อภาพยนตร์ ส่ง request ไป API แสดงผลแบบ real-time หรือเมื่อกด Search
+  - name: แสดงผลการค้นหา
+    description: การ์ดหรือลิสต์ แสดง Poster, ชื่อ, ปี, เรตติ้ง (IMDb), ประเภท
+  - name: หน้ารายละเอียด
+    description: คลิกการ์ดแล้วแสดง Plot เต็ม, นักแสดง, ระยะเวลา, ภาษา (จาก API by ID)
+  - name: สถานะโหลดและข้อผิดพลาด
+    description: Loading spinner/skeleton, ข้อความเมื่อไม่พบผลลัพธ์ หรือ API error
+
+# โครงสร้างไฟล์แนะนำ
+structure:
+  - index.html
+  - styles/style.css
+  - scripts/app.js
+  - scripts/api.js
+  - scripts/ui.js
+  - assets/
+  - README.md
+
+# ขั้นตอนการพัฒนา (Phases)
+phases:
+  - phase: 1 - เตรียมโครงและ API
+    tasks:
+      - สร้าง index.html พื้นฐาน (search input, ปุ่ม, div สำหรับผลลัพธ์)
+      - สร้าง api.js รับ API key จาก config/env หรือ prompt
+      - ทดสอบเรียก OMDb ด้วย fetch (ค้นหาชื่อ) และ log ผล
+  - phase: 2 - UI ผลลัพธ์
+    tasks:
+      - เขียน CSS สำหรับการ์ดภาพยนตร์ (poster, title, year, rating)
+      - ใน app.js เมื่อได้ JSON จาก API ให้วนสร้างการ์ดและ inject ลง div
+      - จัดการเมื่อไม่มีผลลัพธ์ (แสดงข้อความ "ไม่พบภาพยนตร์")
+  - phase: 3 - รายละเอียดและโหลด
+    tasks:
+      - คลิกการ์ด → เรียก API ด้วย imdbID → แสดงใน modal หรือหน้าแยก
+      - เพิ่ม loading state ตอนค้นหาและตอนโหลดรายละเอียด
+      - จัดการ error (เครือข่าย, API key ผิด, โควต้าเกิน)
+  - phase: 4 - ปรับปรุง (ถ้ามีเวลา)
+    tasks:
+      - Debounce ช่องค้นหา (ถ้าทำแบบค้นหาแบบ real-time)
+      - Responsive design
+      - ใส่ README อธิบายการใส่ API key และวิธีรัน
+
+# การตั้งค่า API
+config:
+  omdb:
+    base_url: "https://www.omdbapi.com/"
+    apikey: "a362467a"
+    params:
+      search: "s"
+      by_id: "i"
+    note: "สมัคร API key ที่ https://www.omdbapi.com/apikey.aspx"
